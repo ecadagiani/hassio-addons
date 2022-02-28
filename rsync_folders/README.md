@@ -62,3 +62,18 @@ Prepend with `:` (example `remote_folder: ":NetBackup"`) to rsync on device like
 ### `options` (optional)
 
 Use your own options for rsync. This string is replacing the default one and get directly to rsync. The default is `-archive --recursive --compress --delete --prune-empty-dirs`.
+
+
+## How to use
+
+Run addon in the automation, example automation below:
+```yaml
+- alias: 'hassio_daily_backup'
+  trigger:
+    platform: 'time'
+    at: '3:00:00'
+  action:
+    - service: 'hassio.addon_start'
+      data:
+        addon: '2caa1d32_rsync_folders' # you can get the addon id from URL when you go to the addon info
+```
