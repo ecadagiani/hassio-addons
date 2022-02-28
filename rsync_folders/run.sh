@@ -9,6 +9,7 @@ USERNAME=$(bashio::config 'username')
 PASSWORD=$(bashio::config 'password')
 REMOTE_FOLDER=$(bashio::config 'remote_folder')
 FOLDERS=$(bashio::config 'folders')
+USE_SSH=$(bashio::config 'use_ssh')
 
 ######### PORT
 if bashio::config.has_value 'remote_port'; then
@@ -34,7 +35,12 @@ bashio::log.info "Start rsync backups to $RSYNC_URL"
 for folder in $FOLDERS; do
 	bashio::log.info "Sync $folder -> ${REMOTE_FOLDER}"
 	# shellcheck disable=SC2086
-    sshpass -p $PASSWORD rsync -av -e "ssh -p $PORT -o StrictHostKeyChecking=no" /$folder/ $RSYNC_URL
+
+	if [ $USE_SSH -ge 1 ]; then
+    	sshpass -p $PASSWORD rsync -va -e "ssh -p $PORT -o StrictHostKeyChecking=no" /$folder/ $RSYNC_URL
+	else
+		sshpass -p $PASSWORD rsync -va /$folder/ $RSYNC_URL
+	fi
 done
 
 

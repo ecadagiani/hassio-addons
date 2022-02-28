@@ -26,6 +26,7 @@
     "remote_folder": "str",
     "username": "str",
     "password": "str",
+    "use_ssh": "int",
     "folders": [
       "str"
     ],
@@ -36,6 +37,7 @@
     "remote_folder": "/home/user",
     "username": "user",
     "password": "password",
+    "use_ssh": 0,
     "folders": [
       "/config"
     ]
