@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bashio
+# shellcheck shell=bash
+
 set -e
 
 bashio::log.info "Starting Rsync Folders"
