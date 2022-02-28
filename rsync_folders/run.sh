@@ -19,7 +19,6 @@ if bashio::config.has_value 'remote_port'; then
 else
 	PORT=22
 fi
-bashio::log.info "Use port $PORT"
 
 ######### OPTIONS
 if bashio::config.has_value 'options'; then
@@ -27,21 +26,25 @@ if bashio::config.has_value 'options'; then
 else
 	OPTIONS='-archive --recursive --compress --delete --prune-empty-dirs'
 fi
-bashio::log.info "Use options $OPTIONS"
 
 
 RSYNC_URL="$USERNAME@$HOST:$REMOTE_FOLDER"
 
 bashio::log.info "Start rsync backups to $RSYNC_URL"
+bashio::log.info "With options: $OPTIONS"
 
 for folder in $FOLDERS; do
 	bashio::log.info "Sync $folder -> ${REMOTE_FOLDER}"
 	# shellcheck disable=SC2086
 
 	if [ $USE_SSH -ge 1 ]; then
-    	sshpass -p $PASSWORD rsync -va -e "ssh -p $PORT -o StrictHostKeyChecking=no" /$folder/ $RSYNC_URL
+		bashio::log.info "Use ssh and port $PORT"
+		bashio::log.debug "sshpass -p password rsync -va -e \"ssh -p $PORT -o StrictHostKeyChecking=no\" /$folder $RSYNC_URL"
+    	sshpass -p $PASSWORD rsync -va -e "ssh -p $PORT -o StrictHostKeyChecking=no" /$folder $RSYNC_URL
 	else
-		sshpass -p $PASSWORD rsync -va /$folder/ $RSYNC_URL
+		bashio::log.info "Use rsync without ssh"
+		bashio::log.debug "sshpass -p password rsync -va /$folder $RSYNC_URL"
+		sshpass -p $PASSWORD rsync -va /$folder $RSYNC_URL
 	fi
 done
 
