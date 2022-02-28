@@ -1,10 +1,10 @@
 {
   "name": "Rsync Folders",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "slug": "rsyncfolders",
   "description": "Transfers data from specific folders to a remote rsync server. Using username/password",
   "url": "https://github.com/ecadagiani/hassio-addons/tree/main/rsync_folders",
-  "startup": "once",
+  "startup": "application",
   "boot": "manual",
   "arch": [
     "aarch64",
