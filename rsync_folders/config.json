@@ -18,23 +18,26 @@
     "config:rw",
     "backup:rw",
     "addons:rw",
-    "ssl:rw",
     "media:rw"
   ],
   "schema": {
-    "remote_host":"str",
-    "remote_port":"port?",
-    "remote_folder":"str",
+    "remote_host": "str",
+    "remote_port": "port?",
+    "remote_folder": "str",
     "username": "str",
     "password": "str",
-    "folders":["str"],
-    "options":"str?"
+    "folders": [
+      "str"
+    ],
+    "options": "str?"
   },
   "options": {
-    "remote_host":"",
-    "remote_folder":"/home/user",
+    "remote_host": "",
+    "remote_folder": "/home/user",
     "username": "user",
     "password": "password",
-    "folders":["/config"],
+    "folders": [
+      "/config"
+    ]
   }
 }
