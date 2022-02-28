@@ -1,29 +1,40 @@
 {
-    "name": "Folder Rsync",
-    "version": "1.0.0",
-    "slug": "folderrsync",
-    "description": "Transfers the Hass.io folders to a remote rsync server.",
-    "url" : "https://github.com/carstenschroeder/hassio-addons/blob/master/README.md",
-    "startup": "once",
-    "boot": "manual",
-    "arch": [
-      "aarch64",
-      "amd64",
-      "armhf",
-      "armv7",
-      "i386"
-    ],
-    "map": ["config", "addons", "backup", "share", "ssl", "media"],
-    "options": {
-        "rsyncserver": "server",
-      "rootfolder": "hassio-sync",
-      "username": "user",
-      "password": "password"
-    },
-    "schema": {
-        "rsyncserver": "str",
-      "rootfolder": "str",
-      "username": "str",
-      "password": "str"
-    }
+  "name": "Rsync Folders",
+  "version": "1.0.0",
+  "slug": "rsyncfolders",
+  "description": "Transfers data from specific folders to a remote rsync server. Using username/password",
+  "url": "https://github.com/ecadagiani/hassio-addons/tree/main/rsync_folders",
+  "startup": "once",
+  "boot": "manual",
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armhf",
+    "armv7",
+    "i386"
+  ],
+  "map": [
+    "share:rw",
+    "config:rw",
+    "backup:rw",
+    "addons:rw",
+    "ssl:rw",
+    "media:rw"
+  ],
+  "schema": {
+    "remote_host":"str",
+    "remote_port":"port?",
+    "remote_folder":"str",
+    "username": "str",
+    "password": "str",
+    "folders":["str"],
+    "options":"str?"
+  },
+  "options": {
+    "remote_host":"",
+    "remote_folder":"/home/user",
+    "username": "user",
+    "password": "password",
+    "folders":["/config"],
   }
+}

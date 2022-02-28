@@ -23,4 +23,7 @@ https://github.com/carstenschroeder/hassio-addons/
 
 
 ## Inspiration
-Created this repos on the work of https://github.com/carstenschroeder/hassio-addons and https://github.com/tykarol/hassio-addons
+Created this repos on the work of:
+- https://github.com/carstenschroeder/hassio-addons
+- https://github.com/tykarol/hassio-addons
+- https://github.com/Poeschl/Hassio-Addons/tree/master/rsync
